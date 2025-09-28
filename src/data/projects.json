@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Competitive Programming Debugger",
+    "description": "Visual debugging suite for competitive programming with realtime variable tracing, animated graph renderings, and multi-view timeline playback.",
+    "tech": ["C++", "Electron.js", "D3.js", "cURL"],
+    "image": "/images/cp-debugger.svg",
+    "links": {
+      "github": "https://github.com/azhan3/CP_Debugger",
+      "demo": "https://github.com/azhan3/CP_Debugger#readme"
+    }
+  },
+  {
+    "name": "Fractal Visualizer in Zp Space",
+    "description": "Portable fractal exploration studio for prime fields featuring rotatable canvases, modular arithmetic overlays, and live parameter scrubbing.",
+    "tech": ["Java", "Vert.x", "React.js", "Electron.js"],
+    "image": "/images/fractal-visualizer.svg",
+    "links": {
+      "github": "https://github.com/azhan3/Fractal-Visualizer",
+      "presentation": "https://github.com/azhan3/Fractal-Visualizer#presentations"
+    }
+  },
+  {
+    "name": "Terreria",
+    "description": "2D sandbox adventure inspired by Terraria with custom physics, OpenGL shaders, and procedurally serialized worlds.",
+    "tech": ["Java", "OpenGL", "JBox2D", "GSON"],
+    "image": "/images/terreria.svg",
+    "links": {
+      "github": "https://github.com/azhan3/Terreria"
+    }
+  },
+  {
+    "name": "Track-Pad",
+    "description": "Gesture-driven desktop controller that turns hand tracking into cursor, scrolling, and productivity shortcuts with bloom feedback.",
+    "tech": ["Python", "Flask", "Mediapipe", "OpenCV", "Vue.js"],
+    "image": "/images/track-pad.svg",
+    "links": {
+      "github": "https://github.com/azhan3/Track-Pad"
+    }
+  }
+]
