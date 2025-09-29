@@ -50,8 +50,6 @@ export function Experience() {
 
   return (
     <section id="experience" className="relative min-h-[90vh] overflow-hidden px-6 py-24 sm:px-12 lg:px-24 bg-anchor-forest" style={{ backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#15312a]/70 via-[#1f4337]/80 to-[#10231b]/90" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.18),transparent_45%),radial-gradient(circle_at_80%_10%,rgba(221,244,244,0.18),transparent_45%)]" />
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=120 height=200 viewBox=\'0 0 120 200\'%3E%3Cpath d=\'M60 0 Q70 40 60 80 T60 160 T60 200\' stroke=\'%234caf50\' stroke-width=4 fill=\'none\' stroke-linecap=\'round\' opacity=\'0.15\'/%3E%3C/svg%3E')] opacity-40" />
       <div className="relative z-10 mx-auto max-w-5xl text-white">
         <header className="mb-12 text-center">

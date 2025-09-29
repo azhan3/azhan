@@ -43,8 +43,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative min-h-[70vh] overflow-hidden px-6 pb-32 pt-24 sm:px-12 lg:px-24">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1c2a25]/95 via-[#231810]/95 to-black" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_10%,rgba(255,255,255,0.2),transparent_55%),radial-gradient(circle_at_80%_40%,rgba(255,255,255,0.12),transparent_50%)]" />
       <div className="relative z-10 mx-auto max-w-4xl">
         <header className="mb-12 text-center text-white">
           <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#d7ccc8]">
