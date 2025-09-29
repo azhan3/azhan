@@ -70,7 +70,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-24 pt-32 text-[#16324f] sm:px-12 lg:px-24 bg-anchor-sky"
+  className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-24 pt-32 text-[#16324f] sm:px-12 lg:px-24 bg-anchor-sky"
       style={{ backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}
     >
 
@@ -88,8 +88,7 @@ export function Hero() {
           Engineer | Builder | Explorer
         </p>
         <p className="max-w-2xl leading-relaxed text-lg text-[#294e63]">
-          I design immersive tools and experiences that blend hardware intuition with software artistry.
-          Scroll to descend from pastel skies to the roots of the forest and discover how I build systems that feel alive.
+          Computer Engineering Student at the University of Waterloo.
         </p>
         <div className="flex flex-wrap gap-3 pt-4">
           {buttons.map((button) => (

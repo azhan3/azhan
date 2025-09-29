@@ -11,7 +11,7 @@ function App() {
   const { scrollYProgress } = useScroll()
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-sky font-body text-[#123f52]">
+    <div className="relative min-h-screen w-full overflow-x-hidden font-body text-[#123f52]">
       <a
         href="#hero"
         className="absolute left-4 top-4 z-50 -translate-y-20 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#123f52] shadow transition focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-sky"

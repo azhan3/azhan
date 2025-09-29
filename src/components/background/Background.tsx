@@ -47,10 +47,10 @@ export function Background({ scrollYProgress }: BackgroundProps) {
       sky: interpolate(-180, -360),
       mountainBack: interpolate(-260, -460),
       mountainMid: interpolate(-320, -2560),
-      forest: interpolate(-260, -3520),
-      forestFront: interpolate(-320, -1840),
-      forestForeground: interpolate(-360, -2120),
-      forestClosest: interpolate(-420, -2420),
+      forest: interpolate(-660, -3520),
+      forestFront: interpolate(-1020, -3840),
+      forestForeground: interpolate(-1360, -4220),
+      forestClosest: interpolate(-1420, -4820),
       canopy: interpolate(-90, -170),
       river: interpolate(-45, -110),
       roots: interpolate(-25, -70),
@@ -64,10 +64,10 @@ export function Background({ scrollYProgress }: BackgroundProps) {
     return {
       back: interpolate(36, 18),
       mid: interpolate(52, 134),
-      forest: interpolate(84, 210),
-      forestFront: interpolate(100, 198),
-      forestForeground: interpolate(112, 218),
-      forestClosest: interpolate(122, 238),
+      forest: interpolate(78, 230),
+      forestFront: interpolate(110, 258),
+      forestForeground: interpolate(142, 288),
+      forestClosest: interpolate(162, 338),
     }
   }, [widthProgress])
 
