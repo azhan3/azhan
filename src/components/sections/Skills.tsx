@@ -52,8 +52,6 @@ export function Skills() {
       id="skills"
       className="relative min-h-[80vh] bg-transparent px-6 py-20 sm:px-12 lg:px-20"
     >
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/70 to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.22),transparent_45%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.12),transparent_40%)]" />
       <div className="relative z-10 mx-auto max-w-5xl">
         <header className="mb-12 text-center">
           <span className="inline-flex items-center rounded-full bg-[#81c784]/30 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#285c49]">

@@ -5,7 +5,10 @@ import ProjectCarousel from './ProjectCarousel'
 import ProjectConstellation from './ProjectConstellation'
 import ProjectCard from './ProjectCard'
 import type { ProjectData } from '../../types/project'
-import projectsJson from '../../data/projects.json' assert { type: 'json' }
+// Vite/Babel warns about the deprecated `assert { type: 'json' }` syntax.
+// Remove the import assertion and let TypeScript handle JSON module resolution
+// via `resolveJsonModule` in tsconfig. Treat the imported JSON as unknown.
+import projectsJson from '../../data/projects.json'
 
 type LayoutKey = 'river' | 'cube' | 'carousel' | 'constellation' | 'rafts'
 

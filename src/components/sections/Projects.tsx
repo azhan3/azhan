@@ -3,7 +3,7 @@ import ProjectShowcase from '../projects/ProjectShowcase'
 
 export function Projects() {
   return (
-    <section id="projects" className="relative min-h-[100vh] overflow-hidden bg-transparent px-6 py-24 sm:px-12 lg:px-24">
+  <section id="projects" className="relative min-h-[100vh] overflow-hidden bg-transparent px-6 py-24 sm:px-12 lg:px-24 bg-anchor-forest" style={{ backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
       <div className="absolute inset-0 bg-gradient-to-b from-[#0f3d46]/90 via-[#0f5454]/85 to-[#102a2f]/95" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.22),transparent_45%),radial-gradient(circle_at_80%_35%,rgba(208,255,249,0.18),transparent_55%)]" />
       <div className="relative z-10 mx-auto max-w-5xl text-white">

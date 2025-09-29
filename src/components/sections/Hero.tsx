@@ -70,7 +70,8 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-24 pt-32 text-[#16324f] sm:px-12 lg:px-24"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-24 pt-32 text-[#16324f] sm:px-12 lg:px-24 bg-anchor-sky"
+      style={{ backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}
     >
       <div className="sky-gradient absolute inset-0 -z-10 bg-gradient-to-b from-sky via-[#bbddf5] to-[#a5dbe9]" />
       <div className="hero-cloud absolute -left-24 top-32 h-32 w-56 rounded-full bg-white/60 blur-2xl" />

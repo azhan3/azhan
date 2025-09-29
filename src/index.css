@@ -21,6 +21,25 @@ body {
   overflow-x: hidden;
 }
 
+/* Scenic flow background - single continuous scene inspired by Hack the North */
+.scenic-flow {
+  opacity: 1;
+  mix-blend-mode: normal;
+  will-change: transform;
+  display: block;
+}
+
+/* Remove discrete section anchors - content flows naturally over the single scene */
+.bg-anchor-sky,
+.bg-anchor-summit,
+.bg-anchor-waterfall,
+.bg-anchor-forest {
+  background: none !important;
+}
+
+/* A thin overlay to improve contrast for content placed on top of the image */
+.section-bg-overlay { background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04)); }
+
 #root {
   isolation: isolate;
 }
