@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import type { IconType } from 'react-icons'
 import {
@@ -26,12 +25,31 @@ import {
 import projectsJson from '../../data/projects.json'
 import type { ProjectData } from '../../types/project'
 
-const parsedProjects: ProjectData[] = (projectsJson as unknown[]).map((entry) => {
-  const project = entry as ProjectData
+// Handle different ways Vite might import JSON
+const getProjectsData = () => {
+  let data = projectsJson
+  
+  // If it's wrapped in a default export
+  if (data && typeof data === 'object' && 'default' in data) {
+    data = (data as any).default
+  }
+  
+  if (!Array.isArray(data)) {
+    console.error('Projects data is not an array:', data)
+    return []
+  }
+  
+  return data
+}
+
+const rawProjects = getProjectsData()
+
+const parsedProjects: ProjectData[] = rawProjects.map((entry) => {
+  const project = entry as any
   return {
     ...project,
     links: Object.fromEntries(
-      Object.entries(project.links || {}).filter(([, value]) => typeof value === 'string'),
+      Object.entries(project.links || {}).filter(([, value]) => typeof value === 'string' && value !== undefined),
     ),
   }
 })
@@ -74,8 +92,17 @@ const formatLabel = (input: string) =>
     .replace(/\b\w/g, (char) => char.toUpperCase())
 
 export function ProjectShowcase() {
-  const projects = useMemo(() => parsedProjects, [])
-
+  const projects = parsedProjects
+  
+  if (projects.length === 0) {
+    return (
+      <div className="rounded-3xl border border-white/20 bg-white/10 p-12 text-center text-white/90 shadow-2xl shadow-black/30 backdrop-blur-xl">
+        <p className="text-lg font-semibold">No projects found</p>
+        <p className="mt-2 text-sm text-white/70">Check console for debugging info</p>
+      </div>
+    )
+  }
+  
   return (
     <div className="space-y-16">
       {projects.map((project, index) => {
@@ -86,19 +113,18 @@ export function ProjectShowcase() {
           <motion.article
             key={project.name}
             initial={{ opacity: 0, y: 36 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
+            animate={{ opacity: 1, y: 0 }}
             whileHover={{ y: -8, rotate: -0.35 }}
             transition={{ duration: 0.9, ease: 'easeOut', delay: index * 0.05 }}
-            className="group relative overflow-hidden rounded-[2.5rem] border border-white/40 bg-white/80 p-10 shadow-[0_35px_80px_-35px_rgba(20,60,90,0.35)] backdrop-blur-xl"
+            className="group relative overflow-hidden rounded-[2.5rem] border border-white/20 bg-white/10 p-10 text-white shadow-[0_55px_120px_-45px_rgba(10,30,50,0.65)] backdrop-blur-2xl"
           >
             <div className="pointer-events-none absolute inset-0">
               <div
-                className="absolute -top-28 -left-24 h-72 w-72 rounded-full blur-[120px] opacity-80 transition-opacity duration-700 group-hover:opacity-100"
+                className="absolute -top-28 -left-24 h-72 w-72 rounded-full blur-[120px] opacity-60 transition-opacity duration-700 group-hover:opacity-90"
                 style={{ background: `radial-gradient(circle at center, ${accent.halo} 0%, transparent 70%)` }}
               />
               <div
-                className="absolute -bottom-24 right-0 h-72 w-72 rounded-full blur-[130px]"
+                className="absolute -bottom-24 right-0 h-72 w-72 rounded-full blur-[130px] opacity-60"
                 style={{ background: `radial-gradient(circle at center, ${accent.beam} 0%, transparent 70%)` }}
               />
               <motion.span
@@ -115,15 +141,15 @@ export function ProjectShowcase() {
               />
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#4a6f82]">
-              <span className="rounded-full border border-[#6fb0c520] bg-white/60 px-4 py-1 text-[0.7rem] text-[#2c4f62]">
+            <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+              <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1 text-[0.7rem] text-white/80">
                 Project {index + 1}
               </span>
               <span
                 className="rounded-full px-4 py-1 text-[0.7rem]"
                 style={{
                   border: `1px solid ${accentColor}40`,
-                  backgroundColor: `${accentColor}16`,
+                  backgroundColor: 'rgba(255,255,255,0.08)',
                   color: accentColor,
                 }}
               >
@@ -132,11 +158,11 @@ export function ProjectShowcase() {
             </div>
 
             <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center">
-              <div className="relative order-2 overflow-hidden rounded-3xl border border-white/40 bg-white/70 p-6 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.4)] lg:order-1">
+              <div className="relative order-2 overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-6 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)] backdrop-blur-xl lg:order-1">
                 <motion.div
                   className="absolute inset-0"
                   style={{ background: `radial-gradient(circle at 30% 20%, ${accent.beam} 0%, transparent 65%)` }}
-                  animate={{ opacity: [0.35, 0.7, 0.35] }}
+                  animate={{ opacity: [0.25, 0.55, 0.25] }}
                   transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
                   aria-hidden
                 />
@@ -150,22 +176,23 @@ export function ProjectShowcase() {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-display text-3xl text-[#0f2f42] sm:text-4xl">{project.name}</h3>
-                  <p className="mt-4 text-base leading-relaxed text-[#1b4555] sm:text-lg">{project.description}</p>
+                  <h3 className="font-display text-3xl text-white sm:text-4xl">{project.name}</h3>
+                  <p className="mt-4 text-base leading-relaxed text-white/85 sm:text-lg">{project.description}</p>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-[0.35em] text-[#4a6f82]">Tech Stack</h4>
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">Tech Stack</h4>
                   <ul className="mt-4 flex flex-wrap gap-3">
                     {project.tech.map((tech) => {
                       const Icon = techIconMap[tech]
                       return (
                         <li
                           key={tech}
-                          className="group flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-[#123f52] shadow-inner transition hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(70,130,150,0.18)]"
+                          className="group flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-white/85 backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(70,130,150,0.28)]"
                           style={{
-                            borderColor: `${accentColor}40`,
-                            background: 'rgba(255,255,255,0.65)',
+                            borderColor: `${accentColor}35`,
+                            background: 'rgba(255,255,255,0.08)',
+                            boxShadow: `0 0 0 1px ${accentColor}14 inset`,
                           }}
                         >
                           {Icon ? (
@@ -190,16 +217,16 @@ export function ProjectShowcase() {
                         <a
                           key={key}
                           href={url}
-                          className="group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition"
+                          className="group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold text-white transition backdrop-blur-sm hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(70,130,150,0.28)]"
                           style={{
-                            borderColor: `${accentColor}45`,
-                            backgroundColor: `${accentColor}12`,
-                            color: accentColor,
+                            borderColor: `${accentColor}35`,
+                            backgroundColor: 'rgba(255,255,255,0.08)',
+                            boxShadow: `0 0 0 1px ${accentColor}1c inset`,
                           }}
                           target="_blank"
                           rel="noreferrer"
                         >
-                          <Icon className="text-lg transition group-hover:translate-x-0.5" />
+                          <Icon className="text-lg transition group-hover:translate-x-0.5" style={{ color: accentColor }} />
                           <span>{label}</span>
                         </a>
                       )

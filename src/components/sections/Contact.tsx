@@ -21,7 +21,12 @@ export function Contact() {
   })
 
   useEffect(() => {
-    anime({
+    if (typeof window === 'undefined') return
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (mediaQuery.matches) return
+
+    const rippleAnimation = anime({
       targets: '.contact-ripple',
       scale: [1, 1.18],
       opacity: [0.45, 0],
@@ -30,7 +35,8 @@ export function Contact() {
       delay: anime.stagger(400),
       loop: true,
     })
-    anime({
+
+    const leafAnimation = anime({
       targets: '.leaf-sweep',
       translateX: [-30, 40],
       opacity: [0, 0.8, 0],
@@ -39,16 +45,22 @@ export function Contact() {
       loop: true,
       delay: 600,
     })
+
+    return () => {
+      ;(rippleAnimation as { pause?: () => void }).pause?.()
+      ;(leafAnimation as { pause?: () => void }).pause?.()
+    }
   }, [])
 
   return (
-    <section id="contact" className="relative min-h-[70vh] overflow-hidden px-6 pb-32 pt-24 sm:px-12 lg:px-24">
+    <section
+      id="contact"
+      className="relative min-h-[70vh] overflow-hidden px-6 pb-32 pt-24 sm:px-12 lg:px-24 content-visibility-auto"
+      style={{ containIntrinsicSize: '720px' }}
+    >
       <div className="relative z-10 mx-auto max-w-4xl">
         <header className="mb-12 text-center text-white">
-          <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#d7ccc8]">
-            Roots &amp; Ground
-          </span>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl">Let&apos;s build together</h2>
+          <h2 className="font-display text-4xl sm:text-5xl">Let&apos;s build together</h2>
           <p className="mt-4 text-lg text-white/70">
             Reach out for collaborations, co-op opportunities, or to chat about interactive systems and pastel landscapes.
           </p>

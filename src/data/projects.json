@@ -11,7 +11,7 @@
   },
   {
     "name": "Fractal Visualizer in Zp Space",
-    "description": "Portable fractal exploration studio for prime fields featuring rotatable canvases, modular arithmetic overlays, and live parameter scrubbing.",
+    "description": "Portable fractal visualizer for prime fields featuring rotatable canvases, modular arithmetic overlays, and live parameter scrubbing.",
     "tech": ["Java", "Vert.x", "React.js", "Electron.js"],
     "image": "/images/fractal-visualizer.svg",
     "links": {

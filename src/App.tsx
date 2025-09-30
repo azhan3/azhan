@@ -14,12 +14,12 @@ function App() {
     <div className="relative min-h-screen w-full overflow-x-hidden font-body text-[#123f52]">
       <a
         href="#hero"
-        className="absolute left-4 top-4 z-50 -translate-y-20 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#123f52] shadow transition focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-sky"
+        className="absolute left-4 top-4 z-[240] -translate-y-20 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#123f52] shadow transition focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-sky"
       >
         Skip to content
       </a>
       <Background scrollYProgress={scrollYProgress} />
-      <main className="relative z-10 flex flex-col divide-y divide-white/5">
+      <main className="relative z-[220] flex flex-col divide-y divide-white/5">
         <Hero />
         <About />
         <Skills />

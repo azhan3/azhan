@@ -49,17 +49,16 @@ export function Experience() {
   })
 
   return (
-    <section id="experience" className="relative min-h-[90vh] overflow-hidden px-6 py-24 sm:px-12 lg:px-24 bg-anchor-forest" style={{ backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
+    <section
+      id="experience"
+      className="relative min-h-[90vh] overflow-hidden px-6 py-24 sm:px-12 lg:px-24 bg-anchor-forest content-visibility-auto"
+      style={{ backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', containIntrinsicSize: '900px' }}
+    >
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=120 height=200 viewBox=\'0 0 120 200\' %3E%3Cpath d=\'M60 0 Q70 40 60 80 T60 160 T60 200\' stroke=\'%234caf50\' stroke-width=4 fill=\'none\' stroke-linecap=\'round\' opacity=\'0.15\'/%3E%3C/svg%3E')] opacity-40" />
       <div className="relative z-10 mx-auto max-w-5xl text-white">
         <header className="mb-12 text-center">
-          <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#b9f6ca]">
-            Forest Canopy
-          </span>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl">Experience</h2>
-          <p className="mt-4 text-lg text-[#d2fbe0]/80">
-            A timeline carved into a towering trunk, each branch blooming as new lessons take root.
-          </p>
+          <h2 className="font-display text-4xl sm:text-5xl">Experience</h2>
+
         </header>
 
         <div className="relative flex flex-col items-center">

@@ -33,7 +33,12 @@ export function Hero() {
   }, [])
 
   useEffect(() => {
-    anime({
+    if (typeof window === 'undefined') return
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (mediaQuery.matches) return
+
+    const gradientAnimation = anime({
       targets: '.sky-gradient',
       background: gradientSteps.map(([from, to]) => ({ value: `linear-gradient(180deg, ${from}, ${to})` })),
       easing: 'linear',
@@ -41,7 +46,7 @@ export function Hero() {
       loop: true,
     })
 
-    anime({
+    const cloudAnimation = anime({
       targets: '.hero-cloud',
       translateX: [0, 48],
       duration: 18000,
@@ -50,6 +55,11 @@ export function Hero() {
       loop: true,
       delay: (_element: Element, index: number) => index * 1400,
     })
+
+    return () => {
+      ;(gradientAnimation as { pause?: () => void }).pause?.()
+      ;(cloudAnimation as { pause?: () => void }).pause?.()
+    }
   }, [])
 
   useAnimeOnInView(headlineRef, {
@@ -70,8 +80,8 @@ export function Hero() {
   return (
     <section
       id="hero"
-  className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-24 pt-32 text-[#16324f] sm:px-12 lg:px-24 bg-anchor-sky"
-      style={{ backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pb-24 pt-32 text-[#16324f] sm:px-12 lg:px-24 bg-anchor-sky content-visibility-auto"
+      style={{ backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', containIntrinsicSize: '960px' }}
     >
 
       <motion.div

@@ -12,13 +12,12 @@ const cloudOffsets = [
   { top: '35%', left: '30%', scale: 0.9 },
 ]
 
-const fireflyOffsets = Array.from({ length: 12 }, (_, index) => ({
-  top: `${30 + Math.sin(index) * 8}%`,
-  left: `${10 + index * 7}%`,
-}))
-
 export function Background({ scrollYProgress }: BackgroundProps) {
   const [viewportWidth, setViewportWidth] = useState(() => (typeof window === 'undefined' ? 1280 : window.innerWidth))
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  })
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -28,6 +27,18 @@ export function Background({ scrollYProgress }: BackgroundProps) {
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const handleChange = (event: MediaQueryListEvent) => setPrefersReducedMotion(event.matches)
+
+    setPrefersReducedMotion(mediaQuery.matches)
+    mediaQuery.addEventListener('change', handleChange)
+
+    return () => mediaQuery.removeEventListener('change', handleChange)
   }, [])
 
   const widthProgress = useMemo(() => {
@@ -90,8 +101,23 @@ export function Background({ scrollYProgress }: BackgroundProps) {
   const forestClosestTop = mountainLayerPositions.forestClosest
   const canopyTop = forestClosestTop + 10
 
+  const shouldAnimate = !prefersReducedMotion && viewportWidth >= 768
+
+  const fireflyOffsets = useMemo(() => {
+    const baseCount = viewportWidth >= 1440 ? 12 : viewportWidth >= 960 ? 9 : 7
+    const count = prefersReducedMotion ? Math.max(4, Math.floor(baseCount / 2)) : baseCount
+    return Array.from({ length: count }, (_, index) => ({
+      top: `${30 + Math.sin(index) * 8}%`,
+      left: `${10 + index * (prefersReducedMotion ? 8.5 : 6.5)}%`,
+    }))
+  }, [viewportWidth, prefersReducedMotion])
+
   useEffect(() => {
-    anime({
+    if (!shouldAnimate) {
+      return
+    }
+
+    const cloudInstance = anime({
       targets: '.cloud-element',
       translateX: [0, 60],
       direction: 'alternate',
@@ -101,18 +127,27 @@ export function Background({ scrollYProgress }: BackgroundProps) {
       delay: (_element: Element, i: number) => i * 900,
     })
 
-    anime({
+    const fireflyInstance = anime({
       targets: '.firefly',
       translateY: [0, -18],
-      opacity: [{ value: 0.2, duration: 0 }, { value: 0.95, duration: 2200 }, { value: 0.4, duration: 2200 }],
-      scale: [0.8, 1.2, 0.85],
+      opacity: [
+        { value: 0.2, duration: 0 },
+        { value: 0.95, duration: 2200 },
+        { value: 0.4, duration: 2200 },
+      ],
+      scale: [0.8, 1.12, 0.88],
       easing: 'easeInOutSine',
       direction: 'alternate',
       loop: true,
       duration: 5200,
       delay: (_element: Element, i: number) => 200 * i,
     })
-  }, [])
+
+    return () => {
+      ;(cloudInstance as { pause?: () => void }).pause?.()
+      ;(fireflyInstance as { pause?: () => void }).pause?.()
+    }
+  }, [shouldAnimate])
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
@@ -134,6 +169,9 @@ export function Background({ scrollYProgress }: BackgroundProps) {
           src="/images/mountain0.svg"
           alt="Mountain ridge backdrop"
           className="block h-auto w-screen max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+          draggable={false}
           style={{ objectPosition: 'center bottom' }}
         />
       </motion.div>
@@ -146,6 +184,9 @@ export function Background({ scrollYProgress }: BackgroundProps) {
           src="/images/mountain1.svg"
           alt="Foreground mountain ridge"
           className="block h-auto w-screen max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+          draggable={false}
           style={{ objectPosition: 'center bottom' }}
         />
       </motion.div>
@@ -158,6 +199,9 @@ export function Background({ scrollYProgress }: BackgroundProps) {
           src="/images/forest0.svg"
           alt="Midground forest canopy"
           className="block h-auto w-screen max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+          draggable={false}
           style={{ objectPosition: 'center bottom' }}
         />
       </motion.div>
@@ -170,6 +214,9 @@ export function Background({ scrollYProgress }: BackgroundProps) {
           src="/images/forest1.svg"
           alt="Foreground forest grove"
           className="block h-auto w-screen max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+          draggable={false}
           style={{ objectPosition: 'center bottom' }}
         />
       </motion.div>
@@ -182,6 +229,9 @@ export function Background({ scrollYProgress }: BackgroundProps) {
           src="/images/forest2.svg"
           alt="Near forest silhouettes"
           className="block h-auto w-screen max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+          draggable={false}
           style={{ objectPosition: 'center bottom' }}
         />
       </motion.div>
@@ -194,6 +244,9 @@ export function Background({ scrollYProgress }: BackgroundProps) {
           src="/images/forest3.svg"
           alt="Closest tree line"
           className="block h-auto w-screen max-w-full object-contain"
+          loading="lazy"
+          decoding="async"
+          draggable={false}
           style={{ objectPosition: 'center bottom' }}
         />
       </motion.div>
