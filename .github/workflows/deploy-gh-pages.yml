@@ -5,7 +5,7 @@ on:
     branches:
       - main
 permissions:
-  contents: read
+  contents: write
   pages: write
 
 jobs:
@@ -28,3 +28,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          cname: azhan.ca
