@@ -11,7 +11,7 @@
   },
   {
     "name": "Fractal Visualizer in Zp Space",
-    "description": "Portable fractal visualizer for prime fields featuring rotatable canvases, modular arithmetic overlays, and live parameter scrubbing.",
+    "description": "Portable fractal visualizer for prime fields featuring modular arithmetic overlays, and live parameter scrubbing.",
     "tech": ["Java", "Vert.x", "React.js", "Electron.js"],
     "image": "/images/fractal-visualizer.svg",
     "links": {
@@ -29,7 +29,7 @@
   },
   {
     "name": "Track-Pad",
-    "description": "Gesture-driven desktop controller that turns hand tracking into cursor, scrolling, and productivity shortcuts with bloom feedback.",
+    "description": "Gesture-driven desktop controller that turns hand tracking into cursor, scrolling, volume, and media controls.",
     "tech": ["Python", "Flask", "Mediapipe", "OpenCV", "Vue.js"],
     "image": "/images/track-pad.svg",
     "links": {
