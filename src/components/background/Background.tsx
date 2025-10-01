@@ -166,7 +166,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
         className="absolute inset-x-0 flex justify-center pointer-events-none z-20"
       >
         <img
-          src="/images/mountain0.svg"
+          src={`${import.meta.env.BASE_URL}images/mountain0.svg`}
           alt="Mountain ridge backdrop"
           className="block h-auto w-screen max-w-full object-contain"
           loading="lazy"
@@ -181,7 +181,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
         className="absolute inset-x-0 flex justify-center pointer-events-none z-30"
       >
         <img
-          src="/images/mountain1.svg"
+          src={`${import.meta.env.BASE_URL}images/mountain1.svg`}
           alt="Foreground mountain ridge"
           className="block h-auto w-screen max-w-full object-contain"
           loading="lazy"
@@ -196,7 +196,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
         className="absolute inset-x-0 flex justify-center pointer-events-none z-40"
       >
         <img
-          src="/images/forest0.svg"
+          src={`${import.meta.env.BASE_URL}images/forest0.svg`}
           alt="Midground forest canopy"
           className="block h-auto w-screen max-w-full object-contain"
           loading="lazy"
@@ -211,7 +211,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
         className="absolute inset-x-0 flex justify-center pointer-events-none z-[45]"
       >
         <img
-          src="/images/forest1.svg"
+          src={`${import.meta.env.BASE_URL}images/forest1.svg`}
           alt="Foreground forest grove"
           className="block h-auto w-screen max-w-full object-contain"
           loading="lazy"
@@ -226,7 +226,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
         className="absolute inset-x-0 flex justify-center pointer-events-none z-[47]"
       >
         <img
-          src="/images/forest2.svg"
+          src={`${import.meta.env.BASE_URL}images/forest2.svg`}
           alt="Near forest silhouettes"
           className="block h-auto w-screen max-w-full object-contain"
           loading="lazy"
@@ -241,7 +241,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
         className="absolute inset-x-0 flex justify-center pointer-events-none z-[49]"
       >
         <img
-          src="/images/forest3.svg"
+          src={`${import.meta.env.BASE_URL}images/forest3.svg`}
           alt="Closest tree line"
           className="block h-auto w-screen max-w-full object-contain"
           loading="lazy"

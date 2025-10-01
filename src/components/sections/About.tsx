@@ -13,7 +13,7 @@ export default function About() {
     easing: 'easeOutExpo',
   })
 
-  const portraitIllustration = '/images/pfp.png'
+  const portraitIllustration = `${import.meta.env.BASE_URL}images/pfp.png`
 
   return (
     <section

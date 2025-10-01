@@ -161,7 +161,7 @@ export function ProjectShowcase() {
                   aria-hidden
                 />
                 <img
-                  src={project.image}
+                  src={project.image?.startsWith('/') ? `${import.meta.env.BASE_URL}${project.image.slice(1)}` : project.image}
                   alt={project.name}
                   className="relative z-10 mx-auto h-full w-full max-h-[320px] object-contain drop-shadow-[0_12px_35px_rgba(46,86,110,0.25)]"
                   loading="lazy"
