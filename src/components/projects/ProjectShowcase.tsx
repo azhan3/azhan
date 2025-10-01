@@ -127,17 +127,13 @@ export function ProjectShowcase() {
                 className="absolute -bottom-24 right-0 h-72 w-72 rounded-full blur-[130px] opacity-60"
                 style={{ background: `radial-gradient(circle at center, ${accent.beam} 0%, transparent 70%)` }}
               />
-              <motion.span
-                className="absolute right-16 top-10 block h-40 w-40 rounded-full border"
+              <span
+                className="absolute right-16 top-10 block h-40 w-40 rounded-full border transition-transform duration-1000 ease-out group-hover:rotate-45"
                 style={{ borderColor: accent.orbit, boxShadow: `0 0 22px ${accent.orbit}` }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 48, ease: 'linear', repeat: Infinity }}
               />
-              <motion.span
-                className="absolute -left-20 bottom-6 block h-32 w-32 rounded-full border"
+              <span
+                className="absolute -left-20 bottom-6 block h-32 w-32 rounded-full border transition-transform duration-1000 ease-out group-hover:-rotate-45"
                 style={{ borderColor: `${accent.orbit}` }}
-                animate={{ rotate: -360 }}
-                transition={{ duration: 56, ease: 'linear', repeat: Infinity }}
               />
             </div>
 
@@ -159,11 +155,9 @@ export function ProjectShowcase() {
 
             <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center">
               <div className="relative order-2 overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-6 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)] backdrop-blur-xl lg:order-1">
-                <motion.div
-                  className="absolute inset-0"
+                <div
+                  className="absolute inset-0 opacity-30 transition-opacity duration-500 ease-out group-hover:opacity-60"
                   style={{ background: `radial-gradient(circle at 30% 20%, ${accent.beam} 0%, transparent 65%)` }}
-                  animate={{ opacity: [0.25, 0.55, 0.25] }}
-                  transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
                   aria-hidden
                 />
                 <img

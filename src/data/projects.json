@@ -2,11 +2,11 @@
   {
     "name": "Competitive Programming Debugger",
     "description": "Visual debugging suite for competitive programming with realtime variable tracing, animated graph renderings, and multi-view timeline playback.",
-    "tech": ["C++", "Electron.js", "D3.js", "cURL"],
-    "image": "/images/cp-debugger.svg",
+    "tech": ["C++", "Electron.js", "Next.js", "React.js", "Tailwind", "D3.js", "cURL"],
+    "image": "/images/CP_Debugger.png",
     "links": {
       "github": "https://github.com/azhan3/CP_Debugger",
-      "demo": "https://github.com/azhan3/CP_Debugger#readme"
+      "demo": "https://github.com/azhan3/CP_Debugger"
     }
   },
   {
@@ -15,8 +15,7 @@
     "tech": ["Java", "Vert.x", "React.js", "Electron.js"],
     "image": "/images/fractal-visualizer.svg",
     "links": {
-      "github": "https://github.com/azhan3/Fractal-Visualizer",
-      "presentation": "https://github.com/azhan3/Fractal-Visualizer#presentations"
+      "github": "https://github.com/azhan3/Fractal-Visualizer"
     }
   },
   {

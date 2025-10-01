@@ -94,9 +94,6 @@ export function Hero() {
         <h1 ref={headlineRef} className="font-display text-5xl sm:text-6xl lg:text-7xl">
           Hi, I&apos;m Alexander Zhan
         </h1>
-        <p ref={subheadlineRef} className="max-w-2xl text-xl font-light sm:text-2xl">
-          Engineer | Builder | Explorer
-        </p>
         <p className="max-w-2xl leading-relaxed text-lg text-[#294e63]">
           Computer Engineering Student at the University of Waterloo.
         </p>

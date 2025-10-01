@@ -61,9 +61,7 @@ export function Contact() {
       <div className="relative z-10 mx-auto max-w-4xl">
         <header className="mb-12 text-center text-white">
           <h2 className="font-display text-4xl sm:text-5xl">Let&apos;s build together</h2>
-          <p className="mt-4 text-lg text-white/70">
-            Reach out for collaborations, co-op opportunities, or to chat about interactive systems and pastel landscapes.
-          </p>
+
         </header>
         <motion.div
           ref={sectionRef}
