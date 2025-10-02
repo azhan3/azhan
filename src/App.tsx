@@ -1,11 +1,13 @@
 import { useScroll } from 'framer-motion'
-import Background from './components/background/Background'
+import React, { Suspense } from 'react'
 import Hero from './components/sections/Hero'
 import About from './components/sections/About'
 import Skills from './components/sections/Skills'
 import Experience from './components/sections/Experience'
-import Projects from './components/sections/Projects'
 import Contact from './components/sections/Contact'
+
+const Background = React.lazy(() => import('./components/background/Background'))
+const Projects = React.lazy(() => import('./components/sections/Projects'))
 
 function App() {
   const { scrollYProgress } = useScroll()
@@ -18,13 +20,17 @@ function App() {
       >
         Skip to content
       </a>
-      <Background scrollYProgress={scrollYProgress} />
+      <Suspense fallback={<div aria-hidden className="pointer-events-none fixed inset-0 z-0" />}> 
+        <Background scrollYProgress={scrollYProgress} />
+      </Suspense>
       <main className="relative z-[220] flex flex-col divide-y divide-white/5">
         <Hero />
         <About />
         <Skills />
         <Experience />
-        <Projects />
+        <Suspense fallback={<div className="py-20 text-center text-sm text-white/60">Loading projects…</div>}>
+          <Projects />
+        </Suspense>
         <Contact />
       </main>
       <div className="grain-overlay" aria-hidden="true" />

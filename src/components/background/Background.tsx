@@ -1,6 +1,14 @@
 import { motion, useTransform, type MotionValue } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
-import anime from 'animejs'
+// anime.js is a fairly large runtime — dynamically import it so it doesn't land in the initial bundle
+let animeDefault: any = null
+
+async function loadAnime() {
+  if (animeDefault) return animeDefault
+  const mod = await import('animejs')
+  animeDefault = (mod as any).default || mod
+  return animeDefault
+}
 
 interface BackgroundProps {
   scrollYProgress: MotionValue<number>
@@ -113,39 +121,50 @@ export function Background({ scrollYProgress }: BackgroundProps) {
   }, [viewportWidth, prefersReducedMotion])
 
   useEffect(() => {
-    if (!shouldAnimate) {
-      return
-    }
+    let cloudInstance: any = null
+    let fireflyInstance: any = null
 
-    const cloudInstance = anime({
-      targets: '.cloud-element',
-      translateX: [0, 60],
-      direction: 'alternate',
-      easing: 'easeInOutSine',
-      duration: 12000,
-      loop: true,
-      delay: (_element: Element, i: number) => i * 900,
-    })
+    if (!shouldAnimate) return
 
-    const fireflyInstance = anime({
-      targets: '.firefly',
-      translateY: [0, -18],
-      opacity: [
-        { value: 0.2, duration: 0 },
-        { value: 0.95, duration: 2200 },
-        { value: 0.4, duration: 2200 },
-      ],
-      scale: [0.8, 1.12, 0.88],
-      easing: 'easeInOutSine',
-      direction: 'alternate',
-      loop: true,
-      duration: 5200,
-      delay: (_element: Element, i: number) => 200 * i,
-    })
+    let cancelled = false
+    loadAnime()
+      .then((animeLib) => {
+        if (cancelled) return
+
+        cloudInstance = animeLib({
+          targets: '.cloud-element',
+          translateX: [0, 60],
+          direction: 'alternate',
+          easing: 'easeInOutSine',
+          duration: 12000,
+          loop: true,
+          delay: (_element: Element, i: number) => i * 900,
+        })
+
+        fireflyInstance = animeLib({
+          targets: '.firefly',
+          translateY: [0, -18],
+          opacity: [
+            { value: 0.2, duration: 0 },
+            { value: 0.95, duration: 2200 },
+            { value: 0.4, duration: 2200 },
+          ],
+          scale: [0.8, 1.12, 0.88],
+          easing: 'easeInOutSine',
+          direction: 'alternate',
+          loop: true,
+          duration: 5200,
+          delay: (_element: Element, i: number) => 200 * i,
+        })
+      })
+      .catch((err) => {
+        console.warn('Failed to load anime.js for background animations', err)
+      })
 
     return () => {
-      ;(cloudInstance as { pause?: () => void }).pause?.()
-      ;(fireflyInstance as { pause?: () => void }).pause?.()
+      cancelled = true
+      cloudInstance?.pause?.()
+      fireflyInstance?.pause?.()
     }
   }, [shouldAnimate])
 
