@@ -13,7 +13,7 @@
     "name": "Fractal Visualizer in Zp Space",
     "description": "Portable fractal visualizer for prime fields featuring modular arithmetic overlays, and live parameter scrubbing.",
     "tech": ["Java", "Vert.x", "React.js", "Electron.js"],
-    "image": "/images/fractal-visualizer.svg",
+    "image": "/images/fractal-visualizer.png",
     "links": {
       "github": "https://github.com/azhan3/Fractal-Visualizer"
     }
