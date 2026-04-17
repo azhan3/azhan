@@ -1,4 +1,4 @@
-import { motion, useTransform, type MotionValue } from 'framer-motion'
+import { motion, useSpring, useTransform, type MotionValue } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 // anime.js is a fairly large runtime — dynamically import it so it doesn't land in the initial bundle
 let animeDefault: any = null
@@ -90,16 +90,23 @@ export function Background({ scrollYProgress }: BackgroundProps) {
     }
   }, [widthProgress])
 
-  const skyTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.sky])
-  const mountainTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.mountainBack])
-  const mountainMidTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.mountainMid])
-  const forestTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.forest])
-  const forestFrontTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.forestFront])
-  const forestForegroundTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.forestForeground])
-  const forestClosestTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.forestClosest])
-  const canopyTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.canopy])
-  const riverTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.river])
-  const rootsTranslate = useTransform(scrollYProgress, [0, 1], [0, parallaxDistances.roots])
+  const smoothScrollProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 30,
+    mass: 0.45,
+    restDelta: 0.0008,
+  })
+
+  const skyTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.sky])
+  const mountainTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.mountainBack])
+  const mountainMidTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.mountainMid])
+  const forestTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.forest])
+  const forestFrontTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.forestFront])
+  const forestForegroundTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.forestForeground])
+  const forestClosestTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.forestClosest])
+  const canopyTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.canopy])
+  const riverTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.river])
+  const rootsTranslate = useTransform(smoothScrollProgress, [0, 1], [0, parallaxDistances.roots])
 
   const mountainBackTop = mountainLayerPositions.back
   const mountainMidTop = mountainLayerPositions.mid
@@ -182,7 +189,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
 
       <motion.div
         style={{ y: mountainTranslate, top: `${mountainBackTop}vh` }}
-        className="absolute inset-x-0 flex justify-center pointer-events-none z-20"
+        className="absolute inset-x-0 z-20 flex transform-gpu justify-center [backface-visibility:hidden] pointer-events-none will-change-transform"
       >
         <img
           src={`${import.meta.env.BASE_URL}images/mountain0.svg`}
@@ -197,7 +204,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
 
       <motion.div
         style={{ y: mountainMidTranslate, top: `${mountainMidTop}vh` }}
-        className="absolute inset-x-0 flex justify-center pointer-events-none z-30"
+        className="absolute inset-x-0 z-30 flex transform-gpu justify-center [backface-visibility:hidden] pointer-events-none will-change-transform"
       >
         <img
           src={`${import.meta.env.BASE_URL}images/mountain1.svg`}
@@ -212,7 +219,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
 
       <motion.div
         style={{ y: forestTranslate, top: `${forestTop}vh` }}
-        className="absolute inset-x-0 flex justify-center pointer-events-none z-40"
+        className="absolute inset-x-0 z-40 flex transform-gpu justify-center [backface-visibility:hidden] pointer-events-none will-change-transform"
       >
         <img
           src={`${import.meta.env.BASE_URL}images/forest0.svg`}
@@ -227,7 +234,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
 
       <motion.div
         style={{ y: forestFrontTranslate, top: `${forestFrontTop}vh` }}
-        className="absolute inset-x-0 flex justify-center pointer-events-none z-[45]"
+        className="absolute inset-x-0 z-[45] flex transform-gpu justify-center [backface-visibility:hidden] pointer-events-none will-change-transform"
       >
         <img
           src={`${import.meta.env.BASE_URL}images/forest1.svg`}
@@ -242,7 +249,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
 
       <motion.div
         style={{ y: forestForegroundTranslate, top: `${forestForegroundTop}vh` }}
-        className="absolute inset-x-0 flex justify-center pointer-events-none z-[47]"
+        className="absolute inset-x-0 z-[47] flex transform-gpu justify-center [backface-visibility:hidden] pointer-events-none will-change-transform"
       >
         <img
           src={`${import.meta.env.BASE_URL}images/forest2.svg`}
@@ -257,7 +264,7 @@ export function Background({ scrollYProgress }: BackgroundProps) {
 
       <motion.div
         style={{ y: forestClosestTranslate, top: `${forestClosestTop}vh` }}
-        className="absolute inset-x-0 flex justify-center pointer-events-none z-[49]"
+        className="absolute inset-x-0 z-[49] flex transform-gpu justify-center [backface-visibility:hidden] pointer-events-none will-change-transform"
       >
         <img
           src={`${import.meta.env.BASE_URL}images/forest3.svg`}

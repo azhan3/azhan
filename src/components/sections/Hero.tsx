@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useMemo, useRef } from 'react'
 import anime from 'animejs'
+import { Link } from 'react-router-dom'
 import { useAnimeOnInView } from '../../hooks/useAnimeOnInView'
 
 const heroVariants = {
@@ -11,8 +12,12 @@ const heroVariants = {
 
 type VariantKey = keyof typeof heroVariants
 
-const buttons = [
-  { label: 'Explore My Journey', link: '#about' },
+type HeroButton =
+  | { label: string; link: string }
+  | { label: string; to: string }
+
+const buttons: HeroButton[] = [
+  { label: 'Hiking Photos', to: '/hiking' },
   { label: 'View Projects', link: '#projects' },
   { label: 'GitHub', link: 'https://github.com/azhan3' },
 ]
@@ -99,18 +104,33 @@ export function Hero() {
         </p>
         <div className="flex flex-wrap gap-3 pt-4">
           {buttons.map((button) => (
-            <a
-              key={button.label}
-              href={button.link}
-              className="group rounded-full bg-white/80 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-[#245472] shadow-md shadow-sky/30 transition hover:bg-white/95 hover:shadow-lg hover:shadow-sky/30"
-            >
-              <span className="mr-2 inline-block transition group-hover:translate-y-[-2px]">
-                {button.label}
-              </span>
-              <span aria-hidden="true" className="inline-block text-lg transition group-hover:translate-x-1">
-                →
-              </span>
-            </a>
+            'to' in button ? (
+              <Link
+                key={button.label}
+                to={button.to}
+                className="group rounded-full bg-white/80 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-[#245472] shadow-md shadow-sky/30 transition hover:bg-white/95 hover:shadow-lg hover:shadow-sky/30"
+              >
+                <span className="mr-2 inline-block transition group-hover:translate-y-[-2px]">
+                  {button.label}
+                </span>
+                <span aria-hidden="true" className="inline-block text-lg transition group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            ) : (
+              <a
+                key={button.label}
+                href={button.link}
+                className="group rounded-full bg-white/80 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-[#245472] shadow-md shadow-sky/30 transition hover:bg-white/95 hover:shadow-lg hover:shadow-sky/30"
+              >
+                <span className="mr-2 inline-block transition group-hover:translate-y-[-2px]">
+                  {button.label}
+                </span>
+                <span aria-hidden="true" className="inline-block text-lg transition group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            )
           ))}
         </div>
       </motion.div>
