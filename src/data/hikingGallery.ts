@@ -1,102 +1,206 @@
 import type { HikingLocationSection } from '../types/hiking'
 
-const fromUnsplash = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1400&q=80`
-
-// To use your own images:
-// 1) Add files under public/images/hiking/
-// 2) Replace src with `${import.meta.env.BASE_URL}images/hiking/<your-file-name>`
-// 3) Duplicate a section object below to add a new location block
 export const hikingGallerySections: HikingLocationSection[] = [
   {
-    id: 'banff',
-    location: 'Banff National Park',
-    subtitle: 'Alpine ridgelines and sunrise starts',
-    notes:
-      'A mix of pre-dawn climbs, icy lakes, and long ridge walks with steady elevation gain.',
+    id: 'huangshan-2024',
+    location: 'Huangshan, China',
+    subtitle: 'Trip gallery',
     photos: [
       {
-        src: fromUnsplash('photo-1464822759023-fed622ff2c3b'),
-        alt: 'Snowy mountain ridge with dramatic clouds',
-        caption: 'First light over the ridge line.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776451742/IMG_20240729_190601_ysgvfw.jpg',
+        alt: 'Huangshan mountain view at dusk',
+        scale: 1.9
       },
       {
-        src: fromUnsplash('photo-1469474968028-56623f02e42e'),
-        alt: 'A mountain valley with layered peaks',
-        caption: 'Weather changed every twenty minutes.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776451741/IMG_20240729_190702_qcnmei.jpg',
+        alt: 'Rocky peaks and clouds in Huangshan',
+        scale: 1.5
       },
       {
-        src: fromUnsplash('photo-1472396961693-142e6e269027'),
-        alt: 'Rocky summit trail with broad sky',
-        caption: 'Final push before the summit marker.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776451742/IMG_20240729_154517_mc82cq.jpg',
+        alt: 'Mountain trail scene in Huangshan',
+        scale: 1.75
       },
       {
-        src: fromUnsplash('photo-1448375240586-882707db888b'),
-        alt: 'Forest path with sunlight through trees',
-        caption: 'Descent through old-growth trail sections.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776451742/IMG_20240729_185836_tds9wg.jpg',
+        alt: 'Huangshan peak landscape near sunset',
+        scale: 2
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776451742/IMG_20240730_104541_h0seux.jpg',
+        alt: 'Morning mountain view in Huangshan',
+        scale: 2
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776451743/IMG_20240730_052959_noxwgs.jpg',
+        alt: 'Sunrise clouds over Huangshan',
+        scale: 3
       },
     ],
   },
   {
-    id: 'jasper',
-    location: 'Jasper Backcountry',
-    subtitle: 'High passes and glacier-fed lakes',
-    notes:
-      'Long mileage days with exposed traverse segments and strong wind above tree line.',
+    id: 'high-peak-wilderness',
+    location: 'High Peak Wilderness',
+    subtitle: 'Trip gallery',
     photos: [
-      {
-        src: fromUnsplash('photo-1501556424050-d4816356b73e'),
-        alt: 'Hiker standing above a mountain lake',
-        caption: 'Cold wind, clear sky, no crowds.',
+                    {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776452479/IMG_20230822_122455_w21oxp.jpg',
+        alt: 'High Peak Wilderness mountain scene 2',
+        scale:1.5
       },
       {
-        src: fromUnsplash('photo-1517824806704-9040b037703b'),
-        alt: 'Wide mountain landscape with rocky slopes',
-        caption: 'Traverse section before the pass.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776452479/IMG_20230822_123816_caufap.jpg',
+        alt: 'High Peak Wilderness mountain scene 1',
+      },
+
+
+
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776452479/IMG_20230822_143333_qbmjxz.jpg',
+        alt: 'High Peak Wilderness mountain scene 4',
+        scale:2
       },
       {
-        src: fromUnsplash('photo-1469854523086-cc02fe5d8800'),
-        alt: 'Trail running through open alpine terrain',
-        caption: 'Fast-moving weather near camp.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776452479/IMG_20230822_150902_cqpz8t.jpg',
+        alt: 'High Peak Wilderness mountain scene 5',
+        scale: 1.5
       },
       {
-        src: fromUnsplash('photo-1470770903676-69b98201ea1c'),
-        alt: 'Misty mountain layers at sunset',
-        caption: 'Evening conditions after a storm front.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776452480/IMG_20230822_151433_txz1uz.jpg',
+        alt: 'High Peak Wilderness mountain scene 6',
+        scale:2
       },
-      {
-        src: fromUnsplash('photo-1500530855697-b586d89ba3ee'),
-        alt: 'Hiker walking on rocky mountain terrain',
-        caption: 'Switchbacks with glacier views all day.',
+            {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776452479/IMG_20230822_141809_vcvzak.jpg',
+        alt: 'High Peak Wilderness mountain scene 3',
       },
     ],
   },
   {
-    id: 'squamish',
-    location: 'Squamish Trails',
-    subtitle: 'Granite, forest, and coastal fog',
-    notes:
-      'Shorter but steeper routes that combine technical sections with dense rainforest.',
+    id: 'garibaldi',
+    location: 'Garibaldi',
+    subtitle: 'Trip gallery',
     photos: [
       {
-        src: fromUnsplash('photo-1465189684280-6a8fa9b19a7a'),
-        alt: 'Mountain trail curving around cliffs',
-        caption: 'Narrow trail with sudden ocean views.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453706/IMG_20220828_134339_bln3un.jpg',
+        alt: 'Garibaldi hike scene 1',
+        scale:1.75  
       },
       {
-        src: fromUnsplash('photo-1434725039720-aaad6dd32dfe'),
-        alt: 'Dense trees and hiking path',
-        caption: 'Rainforest section before the granite slab.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453707/IMG_20220828_140535_v3fei3.jpg',
+        alt: 'Garibaldi hike scene 2',
+        scale:1.5
       },
       {
-        src: fromUnsplash('photo-1501785888041-af3ef285b470'),
-        alt: 'Clouds hanging low over jagged peaks',
-        caption: 'Fog rolled in right before descent.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453706/IMG_20220828_114227_fzzjt3.jpg',
+        alt: 'Garibaldi hike scene 3',scale:1.75
+      },
+            {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453707/IMG_20220828_143431_lhvczg.jpg',
+        alt: 'Garibaldi hike scene 5',
+        scale:1.5
       },
       {
-        src: fromUnsplash('photo-1521292270410-a8c4d716d518'),
-        alt: 'Viewpoint over mountain valley at golden hour',
-        caption: 'End of day light over the valley floor.',
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453708/IMG_20220828_161601_bqdcks.jpg',
+        alt: 'Garibaldi hike scene 4',
+        scale:1.5
+      },
+
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453707/IMG_20220828_142555_wbebw5.jpg',
+        alt: 'Garibaldi hike scene 6',
+        scale:1.75
+      },
+    ],
+  },
+  {
+    id: 'golden-ears',
+    location: 'Golden Ears',
+    subtitle: 'Trip gallery',
+    photos: [
+              {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453873/PANO_20220823_170912_jiwx41.jpg',
+        alt: 'Golden Ears panoramic mountain view',
+        scale:2
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453869/IMG_20220823_144314_slauyk.jpg',
+        alt: 'Golden Ears hike scene 1',
+        scale:1.2
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453870/IMG_20220823_144752_wywndg.jpg',
+        alt: 'Golden Ears hike scene 2',
+        scale:1.5
+      },
+            {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453871/IMG_20220823_164149_fs3o78.jpg',
+        alt: 'Golden Ears hike scene 8',
+        scale:1.5
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453870/IMG_20220823_153633_x8fjfa.jpg',
+        alt: 'Golden Ears hike scene 3',
+        scale:1
+      },
+            {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453871/IMG_20220823_195158_aiciyp.jpg',
+        alt: 'Golden Ears hike scene 5',
+        scale:2
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453872/IMG_20220824_011958_dgzi7p.jpg',
+        alt: 'Golden Ears hike scene 4',
+        scale:1.25
+      },
+
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453870/IMG_20220823_114738_fdu7jk.jpg',
+        alt: 'Golden Ears hike scene 6',
+        scale:1.3
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453872/IMG_20220824_012616_fgbdkc.jpg',
+        alt: 'Golden Ears hike scene 7',
+        scale:1.6
+      },
+
+
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453870/IMG_20220823_161224_ylrmrc.jpg',
+        alt: 'Golden Ears hike scene 10',
+        scale:2
+      },
+    ],
+  },
+  {
+    id: 'wedgemount-lake',
+    location: 'Wedgemount Lake',
+    subtitle: 'Trip gallery',
+    photos: [
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453972/IMG_20210829_173924_jqa78p.jpg',
+        alt: 'Wedgemount Lake hike scene 1',
+        scale:1.75
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453970/IMG_20210829_172240_w47e2x.jpg',
+        alt: 'Wedgemount Lake hike scene 2',
+        scale:1.5
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453972/PANO_20210829_170701_gfg43g.jpg',
+        alt: 'Wedgemount Lake panoramic view',
+        scale:2
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453971/IMG_20210829_173913_ctptuj.jpg',
+        alt: 'Wedgemount Lake hike scene 4',
+        scale:1.5
+      },
+      {
+        src: 'https://res.cloudinary.com/dqcqzoo3s/image/upload/v1776453970/IMG_20210829_170725_hvnrt1.jpg',
+        alt: 'Wedgemount Lake hike scene 5',
       },
     ],
   },

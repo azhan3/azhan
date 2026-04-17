@@ -13,6 +13,16 @@ type ExperienceItem = {
 }
 
 const experiences: ExperienceItem[] = [
+    {
+    role: 'Software Development Intern',
+    company: 'RBC',
+    location: 'Toronto, ON',
+    period: 'Jan 2026 – Apr 2026',
+    stack: 'Typescript · Node.js · Swift · Docker · Kubernetes',
+    highlights: [
+      'US Wealth Management Mobility Team'
+    ],
+  },
   {
     role: 'Software and Hardware Development Intern',
     company: 'Ford Motor Company',
